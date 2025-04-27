@@ -15,13 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PaymentController extends AbstractController
 {
-    /**
-     * Etape de vérification avant confirmation du paiement
-     */
     #[Route('/commande/checkout/{reference}', name: 'checkout')]
     public function payment(OrderRepository $repository, $reference, EntityManagerInterface $em): Response
     {
-        // Récupération des produits de la dernière commande et formattage dans un tableau pour Stripe
         $order = $repository->findOneByReference($reference);
         if (!$order) {
             throw $this->createNotFoundException('Cette commande n\'existe pas');
@@ -40,7 +36,7 @@ class PaymentController extends AbstractController
                 'quantity' => $item->getQuantity()
             ];
         }
-        // Ajout des frais de livraison
+
         $productsForStripe[] = [
             'price_data' => [
                 'currency' => 'eur',
@@ -70,9 +66,6 @@ class PaymentController extends AbstractController
 
 
 
-    /**
-     * Méthode appelée lorsque le paiement est validé
-     */
     #[Route('/commande/valide/{stripeSession}', name: 'payment_success')]
     public function paymentSuccess(OrderRepository $repository, $stripeSession, EntityManagerInterface $em, Cart $cart) 
     {
@@ -85,7 +78,6 @@ class PaymentController extends AbstractController
             $em->flush();
         }
 
-        // Envoi mail de Confirmation
         $user = $this->getUser();
 
         $content = "Bonjour {$user->getFirstname()} nous vous remercions de votre commande";
@@ -96,16 +88,12 @@ class PaymentController extends AbstractController
             $content
         );
 
-        // Suppression du panier une fois la commande validée
         $cart->remove();    
         return $this->render('payment/success.html.twig', [
             'order' => $order
         ]);
     }
 
-    /**
-     * Commande annullée (clic sur retour dans la fenêtre)
-     */
     #[Route('/commande/echec/{stripeSession}', name: 'payment_fail')]
     public function paymentFail(OrderRepository $repository, $stripeSession) 
     {

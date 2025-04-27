@@ -13,9 +13,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-/**
- * Espace membre (sécurisé)
- */
 class AccountController extends AbstractController
 {
     #[Route('/compte', name: 'account')]
@@ -25,9 +22,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-    /**
-     * Permet la modification du mot de passe d'un utilisateur sur une page dédiée
-     */
     #[Route('/compte/mot-de-passe', name: 'account_password')]
     public function changePassword(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em): Response
     {
@@ -61,9 +55,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-    /**
-     * Affiche la vue de toutes les commandes d'un utilisateur
-     */
     #[Route('/compte/commandes', name: 'account_orders')]
     public function showOrders(OrderRepository $repository): Response
     {
@@ -73,9 +64,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-    /**
-     * Affiche une commande
-     */
     #[Route('/compte/commandes/{reference}', name: 'account_order')]
     public function showOrder(Order $order): Response
     {
