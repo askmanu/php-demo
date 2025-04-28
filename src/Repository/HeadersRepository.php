@@ -1,5 +1,15 @@
 <?php
 
+/**
+* This file defines the HeadersRepository class, which is a Doctrine repository responsible for database operations related to the Headers entity in the La Boot'ique e-commerce platform. 
+* 
+* The repository extends Symfony's ServiceEntityRepository, providing standard data access methods like find, findOneBy, findAll, and findBy. 
+* 
+* While the class includes commented example methods for custom queries, it currently implements only the basic constructor that registers the repository with Doctrine's manager registry. 
+* 
+* This repository would be used throughout the application to retrieve and manage header elements that likely appear on the website's pages.
+*/
+
 namespace App\Repository;
 
 use App\Entity\Headers;
@@ -14,6 +24,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class HeadersRepository extends ServiceEntityRepository
 {
+    /**
+    * Initializes a new repository for the Headers entity, providing access to database operations for header records.
+    * 
+    * @param ManagerRegistry registry The Doctrine registry service that provides access to entity managers and connections
+    */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Headers::class);

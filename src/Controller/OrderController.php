@@ -1,5 +1,15 @@
 <?php
 
+/**
+* This controller manages the order processing workflow in the La Boot'ique e-commerce platform. It handles two primary functions: displaying the order form and processing order submissions. 
+* 
+* The controller first validates that users have products in their cart and a delivery address before allowing them to proceed with checkout. When an order is submitted, it creates a new order record with customer information, selected shipping method, and a unique reference number. 
+* 
+* It then processes each item in the shopping cart into order line items, calculating totals and storing product details. 
+* The controller integrates with Symfony's form handling system and the application's cart service to manage the transition from shopping cart to confirmed order, ultimately persisting the complete order data to the database and displaying an order confirmation page to the customer.
+*/
+
+
 namespace App\Controller;
 
 use App\Entity\Order;
@@ -15,7 +25,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
-
+    /**
+    * Handles the order creation process by checking cart contents and user address availability before displaying the order form. Redirects to appropriate pages if prerequisites are not met.
+    * 
+    * @param SessionInterface session The session service for storing and retrieving session data
+    * @param Cart cart The cart service for retrieving cart details
+    * 
+    * @return Response object containing either a redirect to another page or the rendered order form template
+    */
     #[Route('/commande', name: 'order')]
     public function index(SessionInterface $session, Cart $cart): Response
     {
@@ -43,6 +60,15 @@ class OrderController extends AbstractController
         ]);
     }
 
+    /**
+    * Processes the order submission form, creates a new order with the selected delivery address and carrier, and saves all order details to the database. If successful, displays the order confirmation page; otherwise redirects to the cart page.
+    * 
+    * @param Cart cart Service that provides access to the user's shopping cart contents
+    * @param Request request The HTTP request object containing form submission data
+    * @param EntityManagerInterface em Doctrine entity manager for database operations
+    * 
+    * @return Response object containing either the order confirmation page or a redirect to the cart page
+    */
     #[Route('/commande/recap', name: 'order_add', methods: 'POST')]
     public function summary(Cart $cart, Request $request, EntityManagerInterface $em): Response
     {
