@@ -1,5 +1,13 @@
 <?php
 
+/**
+* The HomeController manages the main landing page and about page for the La Boot'ique e-commerce platform. 
+* 
+* It handles two routes: the homepage (root URL) which displays featured products and header content in a carousel layout, and the about page ('/a-propos') which presents information about the company. 
+* 
+* The controller interacts with product and header repositories to retrieve the necessary data for display, and renders the appropriate Twig templates with the required context variables.
+*/
+
 namespace App\Controller;
 
 use App\Repository\HeadersRepository;
@@ -10,6 +18,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    /**
+    * Renders the homepage of the La Boot'ique e-commerce platform, displaying featured products and headers with a carousel.
+    * 
+    * @param ProductRepository productRepository Repository used to fetch products marked for homepage display
+    * @param HeadersRepository headersRepository Repository used to fetch all header elements
+    * 
+    * @return Response object containing the rendered homepage template with carousel, featured products, and headers
+    */
     #[Route('/', name: 'home')]
     public function index(ProductRepository $productRepository, HeadersRepository $headersRepository): Response
     {
@@ -22,6 +38,11 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+    * Renders the About page of the La Boot'ique e-commerce platform.
+    * 
+    * @return Response object containing the rendered 'home/about.html.twig' template.
+    */
     #[Route('a-propos', name: 'about')]
     public function about(): Response
     {

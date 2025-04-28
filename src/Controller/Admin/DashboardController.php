@@ -1,5 +1,15 @@
 <?php
 
+/**
+* This file defines the DashboardController for the La Boot'ique admin panel, built with EasyAdmin. 
+* 
+* It serves as the central hub for administrative functions, configuring the dashboard title and creating a navigation menu that provides access to manage all core e-commerce components. 
+* 
+* The controller redirects admin users to the order management interface by default and offers menu items for managing users, product categories, products, shipping carriers, orders, and website banners. 
+* 
+* Each menu item is associated with its corresponding entity and displays an appropriate Font Awesome icon for visual identification.
+*/
+
 namespace App\Controller\Admin;
 
 use App\Entity\Carrier;
@@ -17,9 +27,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
-    /** 
-     * @Route("/admin", name="admin")
-     */
+
+    /**
+    * Default dashboard action that redirects to the Order management interface. This method serves as an entry point to the admin dashboard, automatically redirecting users to the order management section.
+    * 
+    * @return A Symfony Response object that redirects the user to the Order management interface.
+    */
     public function index(): Response
     {
         // redirect to some CRUD controller
@@ -28,6 +41,11 @@ class DashboardController extends AbstractDashboardController
         return $this->redirect($routeBuilder->setController(OrderCrudController::class)->generateUrl());
     }
 
+    /**
+    * Configures the EasyAdmin dashboard by setting the title to "La Boot'Ique".
+    * 
+    * @return A Dashboard object configured with the application title.
+    */
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -35,6 +53,11 @@ class DashboardController extends AbstractDashboardController
 
     }
 
+    /**
+    * Configures the menu items displayed in the Easy Admin dashboard for the e-commerce platform. Creates navigation links to manage various entities including users, categories, products, carriers, orders, and banners.
+    * 
+    * @return An iterable collection of MenuItem objects that define the admin dashboard's navigation menu structure.
+    */
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
