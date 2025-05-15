@@ -122,6 +122,13 @@ class Order
         return $this->orderDetails;
     }
 
+    /**
+     * Adds an order detail to the collection of order details if it's not already present, and establishes a bidirectional relationship by setting this order as the parent of the order detail.
+     *
+     * @param OrderDetails oderDetail The order detail object to add to this order
+     * 
+     * @return Returns the current instance to allow for method chaining
+     */
     public function addOderDetail(OrderDetails $oderDetail): self
     {
         if (!$this->orderDetails->contains($oderDetail)) {
