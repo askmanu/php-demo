@@ -16,6 +16,17 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegisterController extends AbstractController
 {
+    /**
+     * Handles user registration by creating and processing a registration form. When submitted successfully, it creates a new user account, sends a welcome email, and automatically authenticates the user.
+     *
+     * @param Request request The HTTP request object containing form data
+     * @param UserPasswordHasherInterface userPasswordHasher Service for hashing user passwords securely
+     * @param UserAuthenticatorInterface userAuthenticator Service for authenticating users after registration
+     * @param LoginAuthenticator authenticator The specific authenticator implementation to use
+     * @param EntityManagerInterface em Doctrine entity manager for persisting the user to the database
+     * 
+     * @return Response object that either redirects to a page after successful authentication or renders the registration form
+     */
     #[Route('/inscription', name: 'register')]
     public function index(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $em): Response
     {
