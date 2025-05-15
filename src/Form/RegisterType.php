@@ -17,6 +17,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegisterType extends AbstractType
 {
+    /**
+     * Builds a user registration form with fields for first name, last name, email, password (with confirmation), and a submit button. Each field is configured with appropriate validation constraints and display attributes.
+     *
+     * @param FormBuilderInterface builder The form builder instance used to create the form
+     * @param array options An array of options for configuring the form
+     * 
+     * @return void - This method doesn't return a value
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -77,6 +85,13 @@ class RegisterType extends AbstractType
         ;
     }
 
+    /**
+     * Configures the options for this form type by setting the data_class default to User class.
+     *
+     * @param OptionsResolver resolver The resolver for the options
+     * 
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
