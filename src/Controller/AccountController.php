@@ -55,13 +55,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-    /**
-     * Displays the paid orders for the currently authenticated user.
-     *
-     * @param OrderRepository repository Repository used to fetch the user's paid orders from the database
-     * 
-     * @return Response object containing the rendered 'account/orders.html.twig' template with the user's paid orders
-     */
     #[Route('/compte/commandes', name: 'account_orders')]
     public function showOrders(OrderRepository $repository): Response
     {

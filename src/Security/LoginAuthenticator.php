@@ -28,13 +28,6 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         $this->urlGenerator = $urlGenerator;
     }
 
-    /**
-     * Authenticates a user by creating a Passport object with the provided email and password credentials from the request. Stores the email in the session and includes CSRF token validation.
-     *
-     * @param Request request The HTTP request object containing user credentials and CSRF token
-     * 
-     * @return Passport object containing user credentials (email and password) and CSRF token validation
-     */
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
@@ -50,15 +43,6 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
-    /**
-     * Handles the response after a successful authentication. Redirects to the previously stored target path if available, otherwise redirects to the account page.
-     *
-     * @param Request $request The HTTP request object
-     * @param TokenInterface $token The authentication token
-     * @param string $firewallName The name of the firewall
-     * 
-     * @return A RedirectResponse to either the stored target path or the account page, or null if no response could be generated.
-     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {

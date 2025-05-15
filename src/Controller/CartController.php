@@ -22,14 +22,6 @@ class CartController extends AbstractController
         ]);
     }
 
-    /**
-     * Adds an item to the shopping cart and redirects to the cart page.
-     *
-     * @param Cart cart The shopping cart service
-     * @param int id The ID of the item to add to the cart
-     * 
-     * @return A Response object that redirects to the cart page.
-     */
     #[Route('/panier/ajouter/{id}', name: 'add_to_cart')]
     public function add(Cart $cart, int $id): Response
     {
@@ -44,14 +36,6 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart');
     }
 
-    /**
-     * Removes an item from the shopping cart and redirects to the cart page.
-     *
-     * @param Cart cart The shopping cart service injected by Symfony's dependency injection
-     * @param int id The ID of the item to remove from the cart
-     * 
-     * @return A Response object that redirects to the cart page
-     */
     #[Route('/panier/supprimer/{id}', name: 'remove_cart_item')]
     public function removeItem(Cart $cart, int $id): Response
     {
@@ -59,13 +43,6 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart');
     }
 
-    /**
-     * Removes all items from the cart and redirects to the product listing page.
-     *
-     * @param Cart cart The cart object to be emptied
-     * 
-     * @return A Response object that redirects to the product listing page
-     */
     #[Route('/panier/supprimer/', name: 'remove_cart')]
     public function remove(Cart $cart): Response
     {

@@ -15,17 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PaymentController extends AbstractController
 {
-    /**
-     * Processes a checkout payment for an order with the given reference. Retrieves the order details, prepares the data for Stripe payment processing, creates a Stripe checkout session, and redirects the user to the Stripe payment page.
-     *
-     * @param OrderRepository repository Repository used to find the order by its reference
-     * @param string reference The unique reference identifier for the order
-     * @param EntityManagerInterface em Entity manager used to persist changes to the order
-     * 
-     * @return A Response object that redirects the user to the Stripe checkout URL
-     * 
-     * @throws NotFoundHttpException when the order with the given reference does not exist
-     */
     #[Route('/commande/checkout/{reference}', name: 'checkout')]
     public function payment(OrderRepository $repository, $reference, EntityManagerInterface $em): Response
     {
@@ -105,16 +94,6 @@ class PaymentController extends AbstractController
         ]);
     }
 
-    /**
-     * Handles the payment failure scenario by retrieving the associated order and rendering the failure template.
-     *
-     * @param OrderRepository repository Repository used to find the order by Stripe session ID
-     * @param string stripeSession The Stripe session identifier from the URL
-     * 
-     * @return A rendered response containing the payment failure template with the order information.
-     * 
-     * @throws NotFoundException when the order cannot be found or does not belong to the current user.
-     */
     #[Route('/commande/echec/{stripeSession}', name: 'payment_fail')]
     public function paymentFail(OrderRepository $repository, $stripeSession) 
     {

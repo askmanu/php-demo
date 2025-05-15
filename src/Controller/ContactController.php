@@ -11,13 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    /**
-     * Handles the contact form submission. Creates and processes a contact form, sends an email with the form data when submitted successfully, and renders the contact page template.
-     *
-     * @param Request request The HTTP request object containing form submission data
-     * 
-     * @return Response object containing the rendered contact form page
-     */
     #[Route('/contact', name: 'contact')]
     public function index(Request $request): Response
     {

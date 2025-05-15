@@ -10,14 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    /**
-     * Renders the home page of the application, displaying products marked for home page display and headers. Includes a carousel that is specific to the home page.
-     *
-     * @param ProductRepository productRepository Repository used to fetch products marked for display on the home page
-     * @param HeadersRepository headersRepository Repository used to fetch all headers for display
-     * 
-     * @return Response object containing the rendered home page template with carousel, top products, and headers
-     */
     #[Route('/', name: 'home')]
     public function index(ProductRepository $productRepository, HeadersRepository $headersRepository): Response
     {

@@ -12,14 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ContactType extends AbstractType
 {
-    /**
-     * Builds a form structure by adding text fields for first name and last name, an email field, a textarea for the message content, and a submit button with custom styling.
-     *
-     * @param FormBuilderInterface $builder The form builder instance used to create the form
-     * @param array $options An array of options for configuring the form
-     * 
-     * @return void
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -44,13 +36,6 @@ class ContactType extends AbstractType
         ;
     }
 
-    /**
-     * Configures the options for this form type. This method sets default values for various form options using the OptionsResolver component.
-     *
-     * @param OptionsResolver resolver The resolver for the options
-     * 
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

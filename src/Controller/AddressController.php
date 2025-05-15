@@ -20,15 +20,6 @@ class AddressController extends AbstractController
         ]);
     }
 
-    /**
-     * Handles the creation of a new address for the authenticated user. Creates and processes an address form, persists the new address to the database, and redirects based on whether the user is in the middle of placing an order.
-     *
-     * @param Request request The HTTP request object containing form data
-     * @param EntityManagerInterface em Doctrine entity manager for database operations
-     * @param SessionInterface session The session service to check and update order status
-     * 
-     * @return Response object containing either a redirect to the account address list/order page or the rendered address form template
-     */
     #[Route('compte/adresses/ajouter', name: 'account_address_new')]
     public function add(Request $request, EntityManagerInterface $em, SessionInterface $session): Response
     {

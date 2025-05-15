@@ -41,13 +41,6 @@ class OrderType extends AbstractType
         ;
     }
 
-    /**
-     * Configures the options for this form type. Sets default values for the 'user' option which allows passing user data from the controller to the form builder.
-     *
-     * @param OptionsResolver resolver The resolver for the options
-     * 
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

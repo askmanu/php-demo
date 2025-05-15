@@ -75,13 +75,6 @@ class ChangePasswordType extends AbstractType
         ;
     }
 
-    /**
-     * Configures the options for this form type by setting the data class to User.
-     *
-     * @param OptionsResolver resolver The resolver for the options
-     * 
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

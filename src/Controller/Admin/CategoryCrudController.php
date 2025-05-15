@@ -14,13 +14,6 @@ class CategoryCrudController extends AbstractCrudController
         return Category::class;
     }
 
-    /**
-     * Configures the CRUD controller by setting the entity labels in singular and plural forms to "Catégorie" and "Catégories" respectively.
-     *
-     * @param Crud crud The CRUD configuration object to be modified
-     * 
-     * @return The modified Crud object with updated entity label configurations
-     */
     public function configureCrud(Crud $crud): Crud
     {
         return $crud

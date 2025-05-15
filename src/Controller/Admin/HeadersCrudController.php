@@ -26,13 +26,6 @@ class HeadersCrudController extends AbstractCrudController
     }
     
     
-    /**
-     * Configures and returns the form fields to be displayed on a page. This includes text fields for title, button title and URL, a textarea for content, and an image field with upload settings.
-     *
-     * @param string $pageName The name of the page for which to configure fields
-     * 
-     * @return An iterable collection of field objects that define the form structure, including text fields, textarea, and image upload field with configured paths and naming pattern.
-     */
     public function configureFields(string $pageName): iterable
     {
         return [

@@ -131,7 +131,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Removes sensitive data from the user instance. This method is intended to be used to clear any sensitive information that should not be stored longer than necessary.
+     * @see UserInterface
      */
     public function eraseCredentials()
     {
@@ -206,13 +206,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->orders;
     }
 
-    /**
-     * Adds an order to the user's collection of orders if it doesn't already exist, and establishes the bidirectional relationship by setting this user on the order.
-     *
-     * @param Order order The order object to be added to the user's collection
-     * 
-     * @return Returns the current instance of the class for method chaining
-     */
     public function addOrder(Order $order): self
     {
         if (!$this->orders->contains($order)) {

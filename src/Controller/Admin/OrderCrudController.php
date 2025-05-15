@@ -31,13 +31,6 @@ class OrderCrudController extends AbstractCrudController
     }
 
 
-    /**
-     * Configures the CRUD controller by setting entity labels and default sorting order.
-     *
-     * @param Crud crud The CRUD configuration object to be modified
-     * 
-     * @return A configured Crud object with entity labels set to 'Commande'/'Commandes' and default sorting by ID in descending order
-     */
     public function configureCrud(Crud $crud): Crud
     {
         return $crud

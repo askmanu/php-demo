@@ -26,13 +26,6 @@ class CarrierCrudController extends AbstractCrudController
         ];
     }
 
-    /**
-     * Configures the CRUD interface by setting the singular and plural labels for the Transporteur entity.
-     *
-     * @param Crud crud The CRUD configuration object to be modified
-     * 
-     * @return A configured Crud object with entity labels set to 'Transporteur' (singular) and 'Transporteurs' (plural)
-     */
     public function configureCrud(Crud $crud): Crud
     {
         return $crud

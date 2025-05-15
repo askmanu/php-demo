@@ -11,13 +11,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
 
-    /**
-     * Handles the login process. If a user is already authenticated, redirects to the account page. Otherwise, renders the login form with any previous authentication errors.
-     *
-     * @param AuthenticationUtils authenticationUtils Utility service that provides authentication-related information such as errors and last username
-     * 
-     * @return Response object containing either a redirect to the account page (if already logged in) or the rendered login form
-     */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {

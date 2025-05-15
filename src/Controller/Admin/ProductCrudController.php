@@ -29,13 +29,6 @@ class ProductCrudController extends AbstractCrudController
     }
 
   
-    /**
-     * Configures and returns the field definitions for the admin interface based on the specified page name. This method defines the structure and behavior of form fields for product management.
-     *
-     * @param string $pageName The name of the page for which to configure fields (e.g., 'index', 'detail', 'edit', 'new')
-     * 
-     * @return An iterable array of field objects that define the form structure for the admin interface, including name, slug, image, subtitle, description, price, category, and featured status fields.
-     */
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -54,13 +47,6 @@ class ProductCrudController extends AbstractCrudController
         ];
     }
     
-    /**
-     * Configures the CRUD interface by setting the entity labels to "Produit" (singular) and "Produits" (plural).
-     *
-     * @param Crud crud The CRUD configuration object to be modified
-     * 
-     * @return The configured Crud object with updated entity labels
-     */
     public function configureCrud(Crud $crud): Crud
     {
         return $crud

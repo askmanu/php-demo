@@ -16,14 +16,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         parent::__construct($registry, User::class);
     }
 
-    /**
-     * Updates a user's password hash in the database. This method takes a user object and a new hashed password, validates the user type, updates the password, and persists the changes to the database.
-     *
-     * @param PasswordAuthenticatedUserInterface user The user object whose password needs to be upgraded
-     * @param string newHashedPassword The new hashed password to set for the user
-     * 
-     * @throws UnsupportedUserException when the provided user is not an instance of the User class
-     */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (!$user instanceof User) {
