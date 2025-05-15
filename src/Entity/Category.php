@@ -51,6 +51,13 @@ class Category
         return $this->products;
     }
 
+    /**
+     * Adds a product to the category if it's not already present, and establishes the bidirectional relationship by setting this category on the product.
+     *
+     * @param Product product The product object to add to this category
+     * 
+     * @return Returns the current instance, allowing for method chaining.
+     */
     public function addProduct(Product $product): self
     {
         if (!$this->products->contains($product)) {
@@ -61,6 +68,13 @@ class Category
         return $this;
     }
 
+    /**
+     * Removes a product from this category and updates the bidirectional relationship.
+     *
+     * @param Product product The product to remove from this category
+     * 
+     * @return The current Category instance
+     */
     public function removeProduct(Product $product): self
     {
         if ($this->products->removeElement($product)) {
