@@ -19,9 +19,10 @@ class SearchType extends AbstractType
 {
 
     /**
-     * Permet de paraméter un formulaire custom
+     * Configures the options for this form type by setting default values for the data class, HTTP method, and CSRF protection settings.
      *
-     * @param OptionsResolver $resolver
+     * @param OptionsResolver resolver The resolver for the options
+     * 
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
