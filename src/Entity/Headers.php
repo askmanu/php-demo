@@ -1,5 +1,15 @@
 <?php
 
+/**
+* This file defines the Headers entity class for the La Boot'ique e-commerce platform. 
+* 
+* It represents website header sections that can be displayed throughout the site, typically as hero banners or promotional sections. 
+* 
+* The entity stores a title, descriptive content, call-to-action button details (both text and URL), and an associated image. 
+* 
+* The class uses Doctrine ORM annotations to map to the database and provides standard getter and setter methods for all properties. This entity enables the dynamic management of header content through the application's admin interface.
+*/
+
 namespace App\Entity;
 
 use App\Repository\HeadersRepository;
