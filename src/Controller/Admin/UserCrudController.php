@@ -18,6 +18,13 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
+    /**
+     * Configures and returns the field definitions for entity forms and listings. This method defines the structure and behavior of fields that will be displayed in the user interface.
+     *
+     * @param string $pageName The name of the page or context where these field configurations will be applied
+     * 
+     * @return An iterable array of field objects that define the structure and behavior of form fields, including ID, email, roles, first name, and last name fields with specific display configurations.
+     */
     public function configureFields(string $pageName): iterable
     {
         return [
