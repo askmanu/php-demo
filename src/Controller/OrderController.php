@@ -16,6 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends AbstractController
 {
 
+    /**
+     * Handles the order page display. Checks if the cart has products and if the user has addresses before displaying the order form. Redirects to appropriate pages if prerequisites are not met.
+     *
+     * @param SessionInterface session The session service to store order state
+     * @param Cart cart The cart service to retrieve cart details
+     * 
+     * @return Response object containing either a redirect to another page or the rendered order form page
+     */
     #[Route('/commande', name: 'order')]
     public function index(SessionInterface $session, Cart $cart): Response
     {
